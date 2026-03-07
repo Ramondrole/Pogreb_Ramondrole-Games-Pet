@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Питомец</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-nav">
+        <div class="logo-container">
+            <div class="logo hologram-effect">Ramondrole</div>
+        </div>
+        
+        <a href="https://ramondrole.github.io/Pogreb_Ramondrole-Games/" class="back-btn">НАЗАД К ИГРАМ</a>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1 class="glitch">ПИТОМЕЦ</h1>
+            <p class="subtitle">Виртуальное существо требует вашего внимания</p>
+        </header>
+        
+        <div class="currency">
+            <span id="credits">Кредиты: 100</span>
+        </div>
+        
+        <div class="status-message" id="statusMessage">
+            Ваш питомец ожидает команд. Следите за его параметрами!
+        </div>
+        
+        <div class="game-area">
+            <div class="pet-container">
+                <h2 style="text-align: center; margin-bottom: 15px; color: #00ffea;">КИБЕР-СУЩЕСТВО</h2>
+                <div class="pet-display">
+                    <div class="pet" id="pet">
+                        <div class="pet-antenna"></div>
+                        <div class="pet-body">
+                            <div class="pet-eye left"></div>
+                            <div class="pet-eye right"></div>
+                            <div class="pet-mouth"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-controls">
+                    <div class="mobile-btn" onclick="performAction('feed')">🍕</div>
+                    <div class="mobile-btn" onclick="performAction('play')">🎮</div>
+                    <div class="mobile-btn" onclick="performAction('clean')">🛁</div>
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <h2 class="stats-title">СИСТЕМНЫЕ ПОКАЗАТЕЛИ</h2>
+                <div class="stat health">
+                    <div class="stat-name">
+                        <span>Здоровье</span>
+                        <span id="healthValue">80%</span>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="healthBar" style="width: 80%;"></div>
+                    </div>
+                </div>
+                
+                <div class="stat energy">
+                    <div class="stat-name">
+                        <span>Энергия</span>
+                        <span id="energyValue">65%</span>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="energyBar" style="width: 65%;"></div>
+                    </div>
+                </div>
+                
+                <div class="stat mood">
+                    <div class="stat-name">
+                        <span>Настроение</span>
+                        <span id="moodValue">75%</span>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="moodBar" style="width: 75%;"></div>
+                    </div>
+                </div>
+                
+                <div class="stat cleanliness">
+                    <div class="stat-name">
+                        <span>Чистота</span>
+                        <span id="cleanlinessValue">60%</span>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="cleanlinessBar" style="width: 60%;"></div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 15px; background: rgba(0, 0, 0, 0.3); border-radius: 10px;">
+                    <h3 style="color: #ff00cc; margin-bottom: 10px;">ИНФОРМАЦИЯ</h3>
+                    <p>Ухаживайте за своим кибер-существом, чтобы оно развивалось. Низкие показатели могут привести к неисправностям.</p>
+                    <p style="margin-top: 10px;">Зарабатывайте кредиты, ухаживая за питомцем, и покупайте улучшения в магазине.</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="color: #00ffea; margin-bottom: 15px; text-align: center;">ДОСТУПНЫЕ ДЕЙСТВИЯ</h2>
+        <div class="actions-container">
+            <button class="action-btn" onclick="performAction('feed')">
+                КИБЕР-КОРМ
+                <div class="action-cost">Цена: 5 кредитов</div>
+            </button>
+            
+            <button class="action-btn" onclick="performAction('play')">
+                ИГРАТЬ
+                <div class="action-cost">Цена: 3 кредита</div>
+            </button>
+            
+            <button class="action-btn" onclick="performAction('clean')">
+                ОЧИСТКА
+                <div class="action-cost">Цена: 4 кредита</div>
+            </button>
+            
+            <button class="action-btn" onclick="performAction('charge')">
+                ПОДЗАРЯДКА
+                <div class="action-cost">Цена: 6 кредитов</div>
+            </button>
+            
+            <button class="action-btn" onclick="performAction('upgrade')">
+                АПГРЕЙД
+                <div class="action-cost">Цена: 15 кредитов</div>
+            </button>
+            
+            <button class="action-btn" onclick="performAction('rest')">
+                ОТДЫХ
+                <div class="action-cost">Бесплатно</div>
+            </button>
+            <button class="action-btn" onclick="saveGame()">
+                СОХРАНИТЬ
+            </button>
+
+            <button class="action-btn" onclick="loadGame()">
+                ЗАГРУЗИТЬ
+            </button>
+        </div>
+        
+        <div class="shop-container">
+            <h2 class="shop-title">КИБЕР-МАГАЗИН</h2>
+            <div class="shop-items">
+                <div class="shop-item">
+                    <h4>Улучшенный процессор</h4>
+                    <p>Увеличивает максимальную энергию на 20%</p>
+                    <button class="shop-btn" onclick="buyUpgrade('cpu')" id="cpuBtn">
+                        Купить за 50 кредитов
+                    </button>
+                </div>
+                
+                <div class="shop-item">
+                    <h4>Наноботы чистоты</h4>
+                    <p>Автоматически поддерживает чистоту</p>
+                    <button class="shop-btn" onclick="buyUpgrade('nanobots')" id="nanobotsBtn">
+                        Купить за 70 кредитов
+                    </button>
+                </div>
+                
+                <div class="shop-item">
+                    <h4>Эмоциональный чип</h4>
+                    <p>Уменьшает скорость падения настроения</p>
+                    <button class="shop-btn" onclick="buyUpgrade('emotion')" id="emotionBtn">
+                        Купить за 60 кредитов
+                    </button>
+                </div>
+                
+                <div class="shop-item">
+                    <h4>Автокормушка</h4>
+                    <p>Автоматически кормит питомца</p>
+                    <button class="shop-btn" onclick="buyUpgrade('feeder')" id="feederBtn">
+                        Купить за 80 кредитов
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Питомец | Все системы функционируют | <span style="color: #ff00cc;">© Ramondrole</span></p>
+        </footer>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
